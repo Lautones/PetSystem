@@ -43,8 +43,6 @@ Para mais informações, consultar o arquivo "Desafio de Microserviços".
 - [Swagger](http://localhost:5129/index.html)
 
 # INSTALAÇÃO DOS MICROSERVIÇOS
-1. Clone o repositório:
-
-   git clone https://git.gft.com/muan/desafio_angular.git
+1. Clone o repositório
 
 2. As configurações dos servidores estão no appsettings.json. Escolhi não apagar para facilitar o teste. Então, crie os servers com as mesmas configurações para rodar a aplicação
