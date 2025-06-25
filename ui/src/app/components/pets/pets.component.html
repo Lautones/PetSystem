@@ -1,0 +1,85 @@
+<div class="filter-container">
+  <form class="search-form" (submit)="filtrarPets($event)">
+    <div class="opcoes">
+      <span class="search-label">Pesquisar por:</span>
+      <div class="search-options">
+        <div class="search-option">
+          <input type="radio" id="todos" name="searchType" value="todos" [(ngModel)]="searchType">
+          <label for="todos">Todos</label>
+        </div>
+        <div class="search-option">
+          <input type="radio" id="especie" name="searchType" value="especie" [(ngModel)]="searchType">
+          <label for="especie">Espécie</label>
+        </div>
+
+        <div class="search-option">
+          <input type="radio" id="raca" name="searchType" value="raca" [(ngModel)]="searchType">
+          <label for="raca">Raça</label>
+        </div>
+
+        <div class="search-option">
+          <input type="radio" id="id" name="searchType" value="id" [(ngModel)]="searchType">
+          <label for="id">Id</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="pesquisa">
+      <input type="text" class="search-field" placeholder="Digite aqui..." [(ngModel)]="searchValue" name="valorFiltro">
+      <button mat-flat-button class="custom-button primary" type="submit">
+        <fa-icon [icon]="faMagnifyingGlass"></fa-icon>
+      </button>
+    </div>
+  </form>
+</div>
+
+<div class="container">
+
+  <div class="pet-list">
+
+    <div *ngIf="isNotFound" class="error-container">
+      <img src="assets/images/notFound.svg" alt="Erro 404 - Pet não encontrado" class="error-image">
+    </div>
+
+    <ng-container *ngIf="!isNotFound">
+      <mat-card *ngFor="let pet of paginacao" class="pet-card">
+        <div class="card-content">
+          <div class="pet-image-container">
+            <img [src]="pet.imagem" class="pet-image">
+          </div>
+
+          <div class="pet-info">
+
+            <p class="id">ID {{ pet.id }}</p>
+            <p><span>Nome:</span> {{ pet.nome }}</p>
+            <p><span>Raca:</span> {{ pet.raca }}</p>
+            <p><span>Peso:</span> {{ pet.peso }} Kg</p>
+            <p><span>Tutor:</span> {{ pet.tutor }}</p>
+            <p><span>E-mail:</span> {{ pet.emailTutor }}</p>
+          </div>
+
+          <div class="button-group">
+            <button mat-flat-button class="primary" (click)="verPet(pet)">
+              <fa-icon [icon]="faEye"></fa-icon>
+            </button>
+            <button mat-flat-button class="primary">
+              <fa-icon [icon]="faCalendar"></fa-icon>
+            </button>
+            <button mat-flat-button class="primary pen" (click)="EditarPet(pet)">
+              <fa-icon [icon]="faPen"></fa-icon>
+            </button>
+            <button mat-flat-button class="primary trash" (click)="deletarPet(pet.id)">
+              <fa-icon [icon]="faTrash"></fa-icon>
+            </button>
+          </div>
+        </div>
+      </mat-card>
+    </ng-container>
+  </div>
+</div>
+
+<div class="paginator-container">
+  <mat-paginator [length]="totalPets" [pageSize]="pageSize" [pageIndex]="pageIndex" [pageSizeOptions]="pageSizeOptions"
+    (page)="onPageChange($event)" aria-label="Selecionar página">
+  </mat-paginator>
+</div>

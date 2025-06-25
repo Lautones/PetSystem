@@ -1,0 +1,55 @@
+<mat-dialog-content>
+    <div class="container">
+
+        <form [formGroup]="agendamentoEditForm" class="form-cadastro">
+    
+            <div class="input-group petId">
+                <label for="petId">Id do Pet</label>
+                <select id="petId" formControlName="petId" required>
+                    <option *ngFor="let id of ids" [value]="id">{{id}}</option>
+                </select>
+    
+                <div *ngIf="agendamentoEditForm.get('petId')?.invalid && agendamentoEditForm.get('petId')?.touched"
+                    class="error-message">
+                    O campo 'Id do Pet' é obrigatório.
+                </div>
+            </div>
+    
+            <div class="input-group servico">
+                <label for="tipo">Serviço</label>
+                <select id="tipo" formControlName="tipo" required>
+                    <option *ngFor="let tipo of tipos" [value]="tipo">{{tipo}}</option>
+                </select>
+            </div>
+    
+            <div class="input-group data">
+                <label for="data">Data do Agendamento</label>
+                <input type="date" id="data" formControlName="data" placeholder="dd/mm/yyyy" required>
+    
+                <div *ngIf="agendamentoEditForm.get('data')?.invalid && agendamentoEditForm.get('data')?.touched" class="error-message">
+                    O campo 'Data do Agendamento' é obrigatório.
+                </div>
+            </div>
+    
+            <div class="input-group horaAgendamento">
+                <label for="horaAgendamento">Horário do Agendamento</label>
+                <input type="time" id="horaAgendamento" formControlName="horaAgendamento">
+            
+                <div *ngIf="agendamentoEditForm.get('horaAgendamento')?.invalid && agendamentoEditForm.get('horaAgendamento')?.touched" class="error-message">
+                    O campo 'Horário do Agendamento' é obrigatório.
+                </div>
+            </div>
+    
+            <div class="input-group observacoes">
+                <label for="observacao">Observações</label>
+                <textarea id="observacao" formControlName="observacao" placeholder="Pet manifestando episódio de estresse agudo."></textarea>
+            </div>
+    
+            <button mat-flat-button color="primary" class="custom-button primary" (click)="editar()" >Editar</button>
+    
+            <button mat-flat-button color="warn" (click)="cancelar()" class="custom-button warn">Cancelar</button>
+    
+        </form>
+    
+    </div>
+</mat-dialog-content>

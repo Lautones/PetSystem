@@ -1,0 +1,65 @@
+<div class="filter-container">
+    <form class="search-form" (submit)="filtrarAgendamentos($event)">
+        <div class="opcoes">
+            <span class="search-label">Pesquisar por:</span>
+            <div class="search-options">
+                <div class="search-option">
+                    <input type="radio" id="todos" name="searchType" value="todos" [(ngModel)]="searchType">
+                    <label for="todos">Todos</label>
+                </div>
+                <div class="search-option">
+                    <input type="radio" id="petId" name="searchType" value="petId" [(ngModel)]="searchType">
+                    <label for="petId">petId</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="pesquisa">
+            <input type="text" class="search-field" placeholder="Digite aqui..." [(ngModel)]="searchValue"
+                name="valorFiltro">
+            <button mat-flat-button class="custom-button primary" type="submit">
+                <fa-icon [icon]="faMagnifyingGlass"></fa-icon>
+            </button>
+        </div>
+    </form>
+</div>
+
+<div class="container">
+
+    <div class="agendamento-list">
+
+        <div *ngIf="isNotFound" class="error-container">
+            <img src="assets/images/notFound.svg" alt="Erro 404 - Agendamento não encontrado" class="error-image">
+        </div>
+
+        <ng-container *ngIf="!isNotFound">
+            <mat-card *ngFor="let agendamento of paginacao" class="agendamento-card">
+                <div class="card-content">
+                    <div class="agendamento-info">
+
+                        <p class="id">ID {{ agendamento.id }} - PetID {{agendamento.petId}}</p>
+                        <p><span>Serviço:</span> {{ agendamento.tipo }}</p>
+                        <p><span>Data:</span> {{ agendamento.data | date:'dd/MM/yyyy' }}</p>
+                        <p><span>Horario:</span> <!-- {{ agendamento.horario }} --></p>
+                        <p><span>Observações:</span> {{ agendamento.observacao }}</p>
+                    </div>
+
+                    <div class="button-group">
+                        <button mat-flat-button class="primary pen" (click)="editarAgendamento(agendamento)">
+                            <fa-icon [icon]="faPen"></fa-icon>
+                        </button>
+                        <button mat-flat-button class="primary trash" (click)="deletarAgendamento(agendamento.id)">
+                            <fa-icon [icon]="faTrash"></fa-icon>
+                        </button>
+                    </div>
+                </div>
+            </mat-card>
+        </ng-container>
+    </div>
+</div>
+
+<div class="paginator-container">
+    <mat-paginator [length]="totalAgendamentos" [pageSize]="pageSize" [pageIndex]="pageIndex"
+        [pageSizeOptions]="pageSizeOptions" (page)="onPageChange($event)" aria-label="Selecionar página">
+    </mat-paginator>
+</div>

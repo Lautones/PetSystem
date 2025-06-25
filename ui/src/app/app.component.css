@@ -1,0 +1,137 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .app-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  .conteudo {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  mat-sidenav-container {
+    flex: 1;
+  }
+  
+.footer {
+    background-color: #04B5B6;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 75px;
+    padding: 0 20px;
+}
+  
+
+.menu-fixo{
+    background-color: #04B5B6;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 75px;
+    padding: 0 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
+
+fa-icon {
+    color: white;
+    margin-right: 10px;
+}
+
+.menu-full {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    gap: 25px;
+}
+
+.menu-full a {
+    font-family: 'Londrina Solid', cursive;
+    font-size: 20px;
+    letter-spacing: 0.09em;
+    color: white;
+    text-decoration: none;
+}
+
+.menu-full a.active-link {
+    color: #666; 
+    font-weight: bold;
+}
+
+.texto {
+    font-family: 'Londrina Solid', cursive;
+    font-size: 20px;
+    letter-spacing: 0.09em;
+    text-decoration: none;
+    color: white;
+    padding: 20px;
+}
+
+.menu-button {
+    display: none;
+}
+
+mat-sidenav-container {
+    width: 100vw;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    
+}
+
+mat-sidenav {
+    margin-top: 75px;
+    width: 100%;
+    background-color: #04B5B6;
+    height: 100%;
+    overflow: hidden !important;
+    overflow-y: hidden !important;
+}
+
+
+mat-sidenav-content {
+    padding: 20px;
+    overflow-x: hidden;
+
+}
+
+.page-title {
+    font-family: 'Londrina Solid', cursive;
+    font-size: 22px;
+    letter-spacing: 0.09em;
+    color: #666;
+    display: none;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+@media (max-width: 890px) {
+    .menu-button {
+        display: block;
+    }
+
+    .menu-full {
+        display: none;
+    }
+
+    .page-title {
+        display: block;
+        color: white;
+    }
+
+}

@@ -1,0 +1,48 @@
+<mat-toolbar class="menu-fixo">
+    <button mat-icon-button (click)="toggleSidebar()" class="menu-button">
+        <mat-icon><fa-icon [icon]="faBars"></fa-icon></mat-icon>
+    </button>
+    <span class="page-title" *ngIf="!isSidebarOpen">{{ pageTitle }}</span>
+    <div class="menu-full">
+        <a mat-button routerLink="/" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">HOME</a>
+        <a mat-button routerLink="/cadastro" routerLinkActive="active-link">CADASTRAR PET</a>
+        <a mat-button routerLink="/pets" routerLinkActive="active-link">PETS CADASTRADOS</a>
+        <a mat-button routerLink="/agendar" routerLinkActive="active-link">AGENDAR SERVIÇO</a>
+        <a mat-button routerLink="/agendamentos" routerLinkActive="active-link">AGENDAMENTOS</a>
+    </div>
+</mat-toolbar>
+
+<div class="app-container">
+    <mat-sidenav-container class="conteudo">
+        <mat-sidenav [(opened)]="isSidebarOpen" mode="over">
+            <mat-nav-list class="menu-movel">
+                <a mat-list-item routerLink="/" (click)="closeSidebar()" class="espaco">
+                    <span class="texto"><fa-icon [icon]="faHouse"></fa-icon>HOME</span>
+                </a>
+                <a mat-list-item routerLink="/cadastro" (click)="closeSidebar()">
+                    <span class="texto"><fa-icon [icon]="faPaw"></fa-icon>CADASTRAR PET</span>
+                </a>
+                <a mat-list-item routerLink="/pets" (click)="closeSidebar()">
+                    <span class="texto"><fa-icon [icon]="faMagnifyingGlass"></fa-icon>PETS CADASTRADOS</span>
+                </a>
+                <a mat-list-item routerLink="/agendar" (click)="closeSidebar()">
+                    <span class="texto"><fa-icon [icon]="faCalendar"></fa-icon>AGENDAR SERVIÇO</span>
+                </a>
+                <a mat-list-item routerLink="/agendamentos" (click)="closeSidebar()">
+                    <span class="texto"><fa-icon [icon]="faMagnifyingGlass"></fa-icon>AGENDAMENTOS</span>
+                </a>
+            </mat-nav-list>
+        </mat-sidenav>
+    
+        <mat-sidenav-content>
+            <router-outlet></router-outlet>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+    
+    <mat-toolbar class="footer">
+    STARTERS 6.1
+    
+    
+    </mat-toolbar>
+
+</div>

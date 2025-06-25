@@ -1,0 +1,101 @@
+<div class="container">
+
+    <form [formGroup]="cadastroPetForm" class="form-cadastro">
+
+        <div class="input-group nomePet">
+            <label for="nome">Nome</label>
+            <input type="text" id="nome" formControlName="nome" placeholder="Furacão" required>
+
+            <div *ngIf="cadastroPetForm.get('nome')?.invalid && cadastroPetForm.get('nome')?.touched"
+                class="error-message">
+                O campo 'Nome' é obrigatório.
+            </div>
+        </div>
+
+        <div class="input-group especie">
+            <label for="especie">Espécie</label>
+            <select id="especie" formControlName="especie" required (change)="carregarRacas()">
+                <option *ngFor="let especie of especies" [value]="especie">{{especie}}</option>
+            </select>
+        </div>
+
+        <div class="input-group raca">
+            <label for="raca">Raça</label>
+            <select id="raca" formControlName="raca" required>
+                <option *ngFor="let raca of racas" [value]="raca">{{raca}}</option>
+            </select>
+
+            <div *ngIf="cadastroPetForm.get('raca')?.invalid && cadastroPetForm.get('raca')?.touched"
+                class="error-message">
+                O campo 'Raça' é obrigatório.
+            </div>
+        </div>
+
+        <div class="input-group dataNascimento">
+            <label for="dataNascimento">Data de Nascimento</label>
+            <input type="date" id="dataNascimento" formControlName="dataNascimento" placeholder="dd/mm/yyyy" required>
+
+            <div *ngIf="cadastroPetForm.get('dataNascimento')?.invalid && cadastroPetForm.get('dataNascimento')?.touched"
+                class="error-message">
+                O campo 'Data de Nascimento' é obrigatório.
+            </div>
+        </div>
+
+        <div class="input-group peso">
+            <label for="peso">Peso (Kg)</label>
+            <input type="number" id="peso" formControlName="peso" placeholder="12" required>
+
+            <div *ngIf="cadastroPetForm.get('peso')?.hasError('required') && cadastroPetForm.get('peso')?.touched"
+                class="error-message">
+                O campo 'Peso' é obrigatório.
+            </div>
+            <div *ngIf="cadastroPetForm.get('peso')?.hasError('min') && cadastroPetForm.get('peso')?.touched"
+                class="error-message">
+                O peso não pode ser negativo.
+            </div>
+        </div>
+
+        <div class="input-group cor">
+            <label for="cor">Cor</label>
+            <input type="text" id="cor" formControlName="cor" placeholder="Amarelo" required>
+
+            <div *ngIf="cadastroPetForm.get('cor')?.invalid && cadastroPetForm.get('cor')?.touched"
+                class="error-message">
+                O campo 'Cor' é obrigatório.
+            </div>
+        </div>
+
+        <div class="input-group descricao">
+            <label for="descricao">Descrição</label>
+            <textarea id="descricao" formControlName="descricao" placeholder="Pet com muita energia"></textarea>
+        </div>
+
+        <hr>
+
+        <div class="input-group tutor">
+            <label for="tutor">Tutor</label>
+            <input type="text" id="tutor" formControlName="tutor" placeholder="Matheus Lauton" required>
+
+            <div *ngIf="cadastroPetForm.get('tutor')?.invalid && cadastroPetForm.get('tutor')?.touched"
+                class="error-message">
+                O campo 'Tutor' é obrigatório.
+            </div>
+        </div>
+
+        <div class="input-group emailTutor">
+            <label for="nome">E-mail do Tutor</label>
+            <input type="email" id="emailTutor" formControlName="emailTutor" placeholder="teste@gmail.com" required>
+
+            <div *ngIf="cadastroPetForm.get('emailTutor')?.invalid && cadastroPetForm.get('emailTutor')?.touched"
+                class="error-message">
+                O campo 'E-mail do Tutor' é obrigatório.
+            </div>
+        </div>
+
+        <button mat-flat-button color="primary" (click)="cadastrar()" class="custom-button primary">Cadastrar</button>
+
+        <button mat-flat-button color="warn" (click)="cancelar()" class="custom-button warn">Limpar</button>
+
+    </form>
+
+</div>

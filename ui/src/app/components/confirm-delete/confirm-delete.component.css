@@ -1,0 +1,21 @@
+.primary {
+    background-color: #04B5B6 !important;
+}
+
+mat-dialog-actions{
+    justify-content: center;
+}
+
+.custom-button {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 100px;
+    border-radius: 10px !important;
+    font-weight: 500;
+}
+
+::ng-deep .mat-mdc-dialog-container {
+    border-radius: 10px !important;
+    overflow: hidden; 
+}
+

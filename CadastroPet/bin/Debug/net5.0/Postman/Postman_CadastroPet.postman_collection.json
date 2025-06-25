@@ -1,0 +1,249 @@
+{
+	"info": {
+		"_postman_id": "16c2544d-8fb0-4e4b-89b9-484a394235c9",
+		"name": "Postman_Desafio_Api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "41713823"
+	},
+	"item": [
+		{
+			"name": "CRUD",
+			"item": [
+				{
+					"name": "Salvar um novo pet",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"Nome\": \"string\",\r\n  \"Especie\": \"Cachorro\",\r\n  \"Tutor\": \"string\",\r\n  \"EmailTutor\": \"user@example.com\",\r\n  \"Raca\": \"Affenpinscher\",\r\n  \"DataNascimento\": \"2001-03-03\",\r\n  \"Peso\": 0.5,\r\n  \"Cor\": \"string\",\r\n  \"Descricao\": \"string\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/pet",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"pet"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Mostrar todos os pets",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/pet",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"pet"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Mostrar pet por Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/pet/{id}",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"pet",
+								"{id}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Mostrar pet por raça",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/pet/raca/{raca}",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"pet",
+								"raca",
+								"{raca}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Mostrar pet por espécie",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/pet/especie/{especie}",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"pet",
+								"especie",
+								"{especie}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Alterar todos os dados",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n  \"Nome\": \"string\",\r\n  \"Especie\": \"string\",\r\n  \"Tutor\": \"string\",\r\n  \"EmailTutor\": \"user@example.com\",\r\n  \"Raca\": \"string\",\r\n  \"DataNascimento\": \"2025-03-03\",\r\n  \"Peso\": 0.5,\r\n  \"Cor\": \"string\",\r\n  \"Descricao\": \"string\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/pet{id}",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"pet{id}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deletar cão",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/pet/1{id}",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"pet",
+								"1{id}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "IntegracaoAPI",
+			"item": [
+				{
+					"name": "Mostrar racas de cães disponíveis",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/racas/cachorro",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"racas",
+								"cachorro"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Mostrar racas de gatos disponíveis",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/racas/imagens/{id}",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"racas",
+								"imagens",
+								"{id}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Mostrar imagens por id da raça",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/racas/imagens/{id}",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"racas",
+								"imagens",
+								"{id}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

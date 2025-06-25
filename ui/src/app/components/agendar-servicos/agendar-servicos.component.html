@@ -1,0 +1,53 @@
+<div class="container">
+
+    <form [formGroup]="agendamentoForm" class="form-cadastro">
+
+        <div class="input-group petId">
+            <label for="petId">Id do Pet</label>
+            <select id="petId" formControlName="petId" required>
+                <option *ngFor="let id of ids" [value]="id">{{id}}</option>
+            </select>
+
+            <div *ngIf="agendamentoForm.get('petId')?.invalid && agendamentoForm.get('petId')?.touched"
+                class="error-message">
+                O campo 'Id do Pet' é obrigatório.
+            </div>
+        </div>
+
+        <div class="input-group servico">
+            <label for="tipo">Serviço</label>
+            <select id="tipo" formControlName="tipo" required>
+                <option *ngFor="let tipo of tipos" [value]="tipo">{{tipo}}</option>
+            </select>
+        </div>
+
+        <div class="input-group data">
+            <label for="data">Data do Agendamento</label>
+            <input type="date" id="data" formControlName="data" placeholder="dd/mm/yyyy" required>
+
+            <div *ngIf="agendamentoForm.get('data')?.invalid && agendamentoForm.get('data')?.touched" class="error-message">
+                O campo 'Data do Agendamento' é obrigatório.
+            </div>
+        </div>
+
+        <div class="input-group horaAgendamento">
+            <label for="horaAgendamento">Horário do Agendamento</label>
+            <input type="time" id="horaAgendamento" formControlName="horaAgendamento" required>
+        
+            <div *ngIf="agendamentoForm.get('horaAgendamento')?.invalid && agendamentoForm.get('horaAgendamento')?.touched" class="error-message">
+                O campo 'Horário do Agendamento' é obrigatório.
+            </div>
+        </div>
+
+        <div class="input-group observacoes">
+            <label for="observacao">Observações</label>
+            <textarea id="observacao" formControlName="observacao" placeholder="Pet manifestando episódio de estresse agudo."></textarea>
+        </div>
+
+        <button mat-flat-button color="primary" class="custom-button primary" (click)="agendar()" >Cadastrar</button>
+
+        <button mat-flat-button color="warn" (click)="limpar()" class="custom-button warn">Limpar</button>
+
+    </form>
+
+</div>
